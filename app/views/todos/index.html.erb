@@ -10,18 +10,21 @@
               <td colspan="5">
                 Tareas
               </td>
-              <td>Estado</td>
             </tr>
           </thead>
           <tbody>
             <% @todos.each do |t| %>
+
             <tr>
               <td><%= t.description %></td>
               <td><%= link_to "Show", todo_path(t), :class => "btn btn-primary" %></td>
               <td><%= link_to "Edit", edit_todo_path(t), :class => "btn btn-primary" %></td>
               <td><%= link_to "Delete", todo_path(t), method: :delete, :class => "btn btn-primary" %></td>
-              <td><%= link_to "Complete", complete_path(t), :class => "btn btn-success" %></td>
-              <td><%= t.completed %></td>
+              <% if t.completed %>
+                <td><%= link_to "Complete", complete_path(t), :class => "btn disabled" %></td>
+              <% else %>
+                <td><%= link_to "Complete", complete_path(t), :class => "btn btn-success" %></td>
+              <% end %>
             </tr>
             <% end %>
           </tbody>
