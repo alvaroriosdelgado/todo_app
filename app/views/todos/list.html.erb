@@ -1,0 +1,52 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-6">
+      <div class="jumbotron">
+        <h1 class="text-center">Completados</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <td colspan="4">
+                Tareas
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <% @todos.each do |t| %>
+              <% if t.completed %>
+                <tr>
+                  <td><%= t.description %></td>
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="col-6">
+      <div class="jumbotron">
+        <h1 class="text-center">No Completados</h1>
+        <table class="table">
+          <thead>
+            <tr>
+              <td colspan="4">
+                Tareas
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <% @todos.each do |t| %>
+              <% if !t.completed  %>
+                <tr>
+                  <td><%= t.description %></td>
+                </tr>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
